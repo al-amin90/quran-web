@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Amiri, Geist, Geist_Mono } from "next/font/google";
+import { Amiri } from "next/font/google";
 import "./globals.css";
 import SettingsSidebar from "../components/layout/SettingsSidebar";
 import Navbar from "../components/layout/Navbar";
@@ -27,7 +27,6 @@ export default function RootLayout({
         <SettingsProvider>
           <Navbar />
           {children}
-          <SettingsSidebar />
         </SettingsProvider>
       </body>
     </html>

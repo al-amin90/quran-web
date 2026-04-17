@@ -4,6 +4,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useSettings } from "@/src/providers/SettingsProvider";
+import SettingsSidebar from "./SettingsSidebar";
 
 type FilterType = "all" | "surah" | "translation" | "arabic";
 
@@ -25,7 +26,7 @@ const Navbar = () => {
       setLoading(true);
       const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
       const data = await res.json();
-      let filteredResults = data.data ?? [];
+      const filteredResults = data.data ?? [];
 
       if (sortBy === "surah") {
         filteredResults.sort((a: any, b: any) => a.surahId - b.surahId);
@@ -95,6 +96,8 @@ const Navbar = () => {
               </div>
             )}
           </div>
+
+          <SettingsSidebar />
         </div>
 
         {/* Dropdown Results - Only show when searching */}
@@ -108,7 +111,7 @@ const Navbar = () => {
 
             {!loading && resultCount === 0 && (
               <div className="p-4 text-center text-sm text-gray-500">
-                No results for "{query}"
+                No results for - {query}
               </div>
             )}
 

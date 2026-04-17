@@ -16,7 +16,7 @@ export async function generateMetadata({
   const surah = surahService.getSurahById(Number(id));
   if (!surah) return {};
 
-  return { title: `${surah.transliteration} — ${surah.translation}` };
+  return { title: `${surah.transliteration} — ${surah.name}` };
 }
 
 const SurahPage = async ({ params }: { params: Promise<{ id: string }> }) => {

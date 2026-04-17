@@ -77,8 +77,9 @@ export function SurahList({ surahs }: SurahListProps) {
 
               {/* CTA Button */}
               <Link href={`/surah/${surah.id}`}>
-                <button className="w-full mt-4 cursor-pointer py-2 px-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-emerald-400/50 active:scale-95">
-                  Read Surah
+                <button className="w-full mt-4 cursor-pointer py-2 px-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-2xl hover:shadow-emerald-400/50 transition-all duration-300 relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="relative">Read Surah</span>
                 </button>
               </Link>
             </div>

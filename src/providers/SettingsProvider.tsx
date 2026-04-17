@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 import { Settings } from "../types/quran";
 
 const inisial: Settings = {
@@ -21,26 +15,32 @@ interface SettingsContextType {
   mounted: boolean;
 }
 
+function initializeSettings(): Settings {
+  try {
+    if (typeof window === "undefined") {
+      return inisial;
+    }
+
+    const stored = localStorage.getItem("quran-settings");
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      return { ...inisial, ...parsed };
+    }
+  } catch (e) {
+    console.error("Failed to load settings:", e);
+  }
+  return inisial;
+}
+
 const SettingsContext = createContext<SettingsContextType | undefined>(
   undefined,
 );
 
 const SettingsProvider = ({ children }: { children: ReactNode }) => {
-  const [settings, setSettings] = useState<Settings>(inisial);
+  const [settings, setSettings] = useState<Settings>(initializeSettings);
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem("quran-settings");
-      if (stored) {
-        setSettings({ ...DEFAULT, ...JSON.parse(stored) });
-      }
-    } catch (e) {
-      console.error("Failed to load settings:", e);
-    }
-
-    setMounted(true);
-  }, []);
+  const stored = localStorage.getItem("quran-settings");
 
   const update = (partial: Partial<Settings>) => {
     setSettings((prev) => {
@@ -55,7 +55,7 @@ const SettingsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <SettingsContext.Provider value={{ settings, update, mounted }}>
+    <SettingsContext.Provider value={{ settings, update, mounted: true }}>
       {children}
     </SettingsContext.Provider>
   );

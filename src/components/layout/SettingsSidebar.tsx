@@ -2,7 +2,7 @@
 "use client";
 import { useSettings } from "@/src/providers/SettingsProvider";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const ARABIC_FONTS = [
   { value: "Amiri", label: "Amiri" },
@@ -22,7 +22,7 @@ const SettingsSidebar = () => {
       {/* Trigger button */}
       <button
         onClick={() => setOpen(true)}
-        className="fixed right-4 top-1/2  animate-spin -translate-y-1/2 z-40 w-10 h-10 rounded-full bg-emerald-600 text-white shadow-lg flex items-center justify-center hover:bg-emerald-700 transition-all"
+        className=" animate-spin cursor-pointer z-40 w-9 h-9 md:w-10 md:h-10 rounded-full bg-emerald-600 text-white shadow-lg flex items-center justify-center hover:bg-emerald-700 transition-all"
         title="Settings"
       >
         <Image src={"/settings.svg"} width={40} height={40} alt="setting" />
