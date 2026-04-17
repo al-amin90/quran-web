@@ -64,7 +64,7 @@ const searchVerses = (
           surahTransliteration: surah.transliteration,
           verse: { id: verse.id, text: verse.text, translation },
         });
-        if (results.length >= 50) return results; // cap at 50
+        if (results.length >= 50000) return results; // cap at 50
       }
     }
   }

@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${amiri.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        {/* <Navbar /> */}
+        <Navbar />
         {children}
         <SettingsSidebar />
       </body>
