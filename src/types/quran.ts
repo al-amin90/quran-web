@@ -19,3 +19,9 @@ export interface ITranslation {
   verse: number;
   text: string;
 }
+
+export interface Settings {
+  arabicFont: "Amiri" | "Noto Naskh Arabic";
+  arabicFontSize: number;
+  translationFontSize: number;
+}
