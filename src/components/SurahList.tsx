@@ -1,4 +1,5 @@
 import { ISurah } from "@/src/types/quran";
+import Link from "next/link";
 
 interface SurahListProps {
   surahs: Omit<ISurah, "verses">[];
@@ -90,9 +91,11 @@ export function SurahList({ surahs }: SurahListProps) {
                 </div>
 
                 {/* CTA Button */}
-                <button className="w-full mt-4 py-2 px-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-900 font-semibold rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-amber-500/50">
-                  Read Surah
-                </button>
+                <Link href={`/surah/${surah.id}`}>
+                  <button className="w-full mt-4 cursor-pointer py-2 px-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-900 font-semibold rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-amber-500/50">
+                    Read Surah
+                  </button>
+                </Link>
               </div>
 
               {/* Decorative Corner Element */}
