@@ -1,10 +1,14 @@
 "use client";
 
-import { useSettings } from "../hooks/useSettings";
-import { IVerse } from "../types/quran";
+import { IVerse } from "@/src/types/quran";
+import { useSettings } from "../providers/SettingsProvider";
 
 export default function AyatList({ verses }: { verses: IVerse[] }) {
-  const { settings } = useSettings();
+  const { settings, mounted } = useSettings();
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div className="flex flex-col gap-6">
@@ -37,7 +41,7 @@ export default function AyatList({ verses }: { verses: IVerse[] }) {
               className="text-right leading-loose text-emerald-950 font-medium"
               style={{
                 fontFamily: `"${settings.arabicFont}", serif`,
-                fontSize: settings.arabicFontSize + "px",
+                fontSize: `${settings.arabicFontSize}px`,
                 direction: "rtl",
               }}
             >
@@ -48,7 +52,7 @@ export default function AyatList({ verses }: { verses: IVerse[] }) {
           {/* Translation Section */}
           <p
             className="text-emerald-700/95 leading-relaxed text-left"
-            style={{ fontSize: settings.translationFontSize + "px" }}
+            style={{ fontSize: `${settings.translationFontSize}px` }}
           >
             {verse.translation}
           </p>

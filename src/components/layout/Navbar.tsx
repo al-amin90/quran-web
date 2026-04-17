@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { useSettings } from "@/src/hooks/useSettings";
+import { useSettings } from "@/src/providers/SettingsProvider";
 
 type FilterType = "all" | "surah" | "translation" | "arabic";
 

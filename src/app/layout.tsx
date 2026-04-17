@@ -3,6 +3,7 @@ import { Amiri, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SettingsSidebar from "../components/layout/SettingsSidebar";
 import Navbar from "../components/layout/Navbar";
+import SettingsProvider from "../providers/SettingsProvider";
 
 const amiri = Amiri({
   subsets: ["arabic"],
@@ -23,9 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${amiri.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        {children}
-        <SettingsSidebar />
+        <SettingsProvider>
+          <Navbar />
+          {children}
+          <SettingsSidebar />
+        </SettingsProvider>
       </body>
     </html>
   );
