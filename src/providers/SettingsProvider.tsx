@@ -38,9 +38,6 @@ const SettingsContext = createContext<SettingsContextType | undefined>(
 
 const SettingsProvider = ({ children }: { children: ReactNode }) => {
   const [settings, setSettings] = useState<Settings>(initializeSettings);
-  const [mounted, setMounted] = useState(false);
-
-  const stored = localStorage.getItem("quran-settings");
 
   const update = (partial: Partial<Settings>) => {
     setSettings((prev) => {

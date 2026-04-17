@@ -2,7 +2,7 @@
 "use client";
 import { useSettings } from "@/src/providers/SettingsProvider";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ARABIC_FONTS = [
   { value: "Amiri", label: "Amiri" },
@@ -12,7 +12,13 @@ const ARABIC_FONTS = [
 
 const SettingsSidebar = () => {
   const [open, setOpen] = useState(false);
-  const { settings, update, mounted } = useSettings();
+  const [mounted, setMounted] = useState(false);
+  const { settings, update } = useSettings();
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
     return null;

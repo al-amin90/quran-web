@@ -1,12 +1,19 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { IVerse } from "@/src/types/quran";
 import { useSettings } from "../providers/SettingsProvider";
+import { useEffect, useState } from "react";
 
 export default function AyatList({ verses }: { verses: IVerse[] }) {
-  const { settings, mounted } = useSettings();
+  const { settings } = useSettings();
+  const [hydrated, setHydrated] = useState(false);
 
-  if (!mounted) {
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  if (!hydrated) {
     return null;
   }
 
