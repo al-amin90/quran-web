@@ -7,6 +7,7 @@ import { useState } from "react";
 const ARABIC_FONTS = [
   { value: "Amiri", label: "Amiri" },
   { value: "Noto Naskh Arabic", label: "Noto Naskh" },
+  { value: "Cairo", label: "Cairo" },
 ];
 
 const SettingsSidebar = () => {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Amiri } from "next/font/google";
+import { Amiri, Cairo, Noto_Naskh_Arabic } from "next/font/google";
 import "./globals.css";
-import SettingsSidebar from "../components/layout/SettingsSidebar";
+
 import Navbar from "../components/layout/Navbar";
 import SettingsProvider from "../providers/SettingsProvider";
 
@@ -9,6 +9,18 @@ const amiri = Amiri({
   subsets: ["arabic"],
   weight: ["400", "700"],
   variable: "--font-amiri",
+});
+
+const notoNaskh = Noto_Naskh_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "700"],
+  variable: "--font-noto-naskh",
+});
+
+const cairo = Cairo({
+  subsets: ["arabic"],
+  weight: ["400", "700"],
+  variable: "--font-cairo",
 });
 
 export const metadata: Metadata = {
@@ -22,7 +34,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${amiri.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${amiri.variable} ${notoNaskh.variable} ${cairo.variable} h-full antialiased`}
+    >
       <body className="min-h-full flex flex-col">
         <SettingsProvider>
           <Navbar />
